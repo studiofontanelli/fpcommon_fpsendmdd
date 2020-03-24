@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdbmdl:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdbmdl="http://www.csi.it/mddtools/rdbmdl" name="fpsend">
+  <elements xsi:type="rdbmdl:Table" uid="tb_JBM_COUNTER" name="JBM_COUNTER">
+    <columns uid="col_JBM_COUNTER_NAME" name="NAME" isPrimaryKey="true" isForeignKey="false">
+      <type name="varchar" size="255" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_JBM_COUNTER_NEXT_ID" name="NEXT_ID" isPrimaryKey="false" isForeignKey="false">
+      <type name="int8" size="19" nullable="true" type="BIGINT"/>
+    </columns>
+    <primaryKey uid="pk_JBM_COUNTER" name="pk_JBM_COUNTER" includedColumns="col_JBM_COUNTER_NAME"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_JBM_DUAL" name="JBM_DUAL">
+    <columns uid="col_JBM_DUAL_DUMMY" name="DUMMY" isPrimaryKey="true" isForeignKey="false">
+      <type name="int4" size="10" type="INTEGER"/>
+    </columns>
+    <primaryKey uid="pk_JBM_DUAL" name="pk_JBM_DUAL" includedColumns="col_JBM_DUAL_DUMMY"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_JBM_ID_CACHE" name="JBM_ID_CACHE">
+    <columns uid="col_JBM_ID_CACHE_NODE_ID" name="NODE_ID" isPrimaryKey="true" isForeignKey="false">
+      <type name="int4" size="10" type="INTEGER"/>
+    </columns>
+    <columns uid="col_JBM_ID_CACHE_CNTR" name="CNTR" isPrimaryKey="true" isForeignKey="false">
+      <type name="int4" size="10" type="INTEGER"/>
+    </columns>
+    <columns uid="col_JBM_ID_CACHE_JBM_ID" name="JBM_ID" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="255" nullable="true" type="VARCHAR"/>
+    </columns>
+    <primaryKey uid="pk_JBM_ID_CACHE" name="pk_JBM_ID_CACHE" includedColumns="col_JBM_ID_CACHE_NODE_ID col_JBM_ID_CACHE_CNTR"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_JBM_MSG" name="JBM_MSG">
+    <columns uid="col_JBM_MSG_MESSAGE_ID" name="MESSAGE_ID" isPrimaryKey="true" isForeignKey="false">
+      <type name="int8" size="19" type="BIGINT"/>
+    </columns>
+    <columns uid="col_JBM_MSG_RELIABLE" name="RELIABLE" isPrimaryKey="false" isForeignKey="false">
+      <type name="bpchar" size="1" nullable="true" type="CHAR"/>
+    </columns>
+    <columns uid="col_JBM_MSG_EXPIRATION" name="EXPIRATION" isPrimaryKey="false" isForeignKey="false">
+      <type name="int8" size="19" nullable="true" type="BIGINT"/>
+    </columns>
+    <columns uid="col_JBM_MSG_TIMESTAMP" name="TIMESTAMP" isPrimaryKey="false" isForeignKey="false">
+      <type name="int8" size="19" nullable="true" type="BIGINT"/>
+    </columns>
+    <columns uid="col_JBM_MSG_PRIORITY" name="PRIORITY" isPrimaryKey="false" isForeignKey="false">
+      <type name="int2" size="5" nullable="true" type="SMALLINT"/>
+    </columns>
+    <columns uid="col_JBM_MSG_TYPE" name="TYPE" isPrimaryKey="false" isForeignKey="false">
+      <type name="int2" size="5" nullable="true" type="SMALLINT"/>
+    </columns>
+    <columns uid="col_JBM_MSG_HEADERS" name="HEADERS" isPrimaryKey="false" isForeignKey="false">
+      <type name="bytea" size="2147483647" nullable="true" type="BINARY"/>
+    </columns>
+    <columns uid="col_JBM_MSG_PAYLOAD" name="PAYLOAD" isPrimaryKey="false" isForeignKey="false">
+      <type name="bytea" size="2147483647" nullable="true" type="BINARY"/>
+    </columns>
+    <primaryKey uid="pk_JBM_MSG" name="pk_JBM_MSG" includedColumns="col_JBM_MSG_MESSAGE_ID"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_JBM_MSG_REF" name="JBM_MSG_REF">
+    <columns uid="col_JBM_MSG_REF_MESSAGE_ID" name="MESSAGE_ID" isPrimaryKey="true" isForeignKey="false">
+      <type name="int8" size="19" type="BIGINT"/>
+    </columns>
+    <columns uid="col_JBM_MSG_REF_CHANNEL_ID" name="CHANNEL_ID" isPrimaryKey="true" isForeignKey="false">
+      <type name="int8" size="19" type="BIGINT"/>
+    </columns>
+    <columns uid="col_JBM_MSG_REF_TRANSACTION_ID" name="TRANSACTION_ID" isPrimaryKey="false" isForeignKey="false">
+      <type name="int8" size="19" nullable="true" type="BIGINT"/>
+    </columns>
+    <columns uid="col_JBM_MSG_REF_STATE" name="STATE" isPrimaryKey="false" isForeignKey="false">
+      <type name="bpchar" size="1" nullable="true" type="CHAR"/>
+    </columns>
+    <columns uid="col_JBM_MSG_REF_ORD" name="ORD" isPrimaryKey="false" isForeignKey="false">
+      <type name="int8" size="19" nullable="true" type="BIGINT"/>
+    </columns>
+    <columns uid="col_JBM_MSG_REF_PAGE_ORD" name="PAGE_ORD" isPrimaryKey="false" isForeignKey="false">
+      <type name="int8" size="19" nullable="true" type="BIGINT"/>
+    </columns>
+    <columns uid="col_JBM_MSG_REF_DELIVERY_COUNT" name="DELIVERY_COUNT" isPrimaryKey="false" isForeignKey="false">
+      <type name="int4" size="10" nullable="true" type="INTEGER"/>
+    </columns>
+    <columns uid="col_JBM_MSG_REF_SCHED_DELIVERY" name="SCHED_DELIVERY" isPrimaryKey="false" isForeignKey="false">
+      <type name="int8" size="19" nullable="true" type="BIGINT"/>
+    </columns>
+    <primaryKey uid="pk_JBM_MSG_REF" name="pk_JBM_MSG_REF" includedColumns="col_JBM_MSG_REF_MESSAGE_ID col_JBM_MSG_REF_CHANNEL_ID"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_JBM_POSTOFFICE" name="JBM_POSTOFFICE">
+    <columns uid="col_JBM_POSTOFFICE_POSTOFFICE_NAME" name="POSTOFFICE_NAME" isPrimaryKey="true" isForeignKey="false">
+      <type name="varchar" size="255" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_JBM_POSTOFFICE_NODE_ID" name="NODE_ID" isPrimaryKey="true" isForeignKey="false">
+      <type name="int4" size="10" type="INTEGER"/>
+    </columns>
+    <columns uid="col_JBM_POSTOFFICE_QUEUE_NAME" name="QUEUE_NAME" isPrimaryKey="true" isForeignKey="false">
+      <type name="varchar" size="255" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_JBM_POSTOFFICE_COND" name="COND" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="1023" nullable="true" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_JBM_POSTOFFICE_SELECTOR" name="SELECTOR" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="1023" nullable="true" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_JBM_POSTOFFICE_CHANNEL_ID" name="CHANNEL_ID" isPrimaryKey="false" isForeignKey="false">
+      <type name="int8" size="19" nullable="true" type="BIGINT"/>
+    </columns>
+    <columns uid="col_JBM_POSTOFFICE_CLUSTERED" name="CLUSTERED" isPrimaryKey="false" isForeignKey="false">
+      <type name="bpchar" size="1" nullable="true" type="CHAR"/>
+    </columns>
+    <columns uid="col_JBM_POSTOFFICE_ALL_NODES" name="ALL_NODES" isPrimaryKey="false" isForeignKey="false">
+      <type name="bpchar" size="1" nullable="true" type="CHAR"/>
+    </columns>
+    <primaryKey uid="pk_JBM_POSTOFFICE" name="pk_JBM_POSTOFFICE" includedColumns="col_JBM_POSTOFFICE_POSTOFFICE_NAME col_JBM_POSTOFFICE_NODE_ID col_JBM_POSTOFFICE_QUEUE_NAME"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_JBM_ROLE" name="JBM_ROLE">
+    <columns uid="col_JBM_ROLE_ROLE_ID" name="ROLE_ID" isPrimaryKey="true" isForeignKey="false">
+      <type name="varchar" size="32" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_JBM_ROLE_USER_ID" name="USER_ID" isPrimaryKey="true" isForeignKey="false">
+      <type name="varchar" size="32" type="VARCHAR"/>
+    </columns>
+    <primaryKey uid="pk_JBM_ROLE" name="pk_JBM_ROLE" includedColumns="col_JBM_ROLE_USER_ID col_JBM_ROLE_ROLE_ID"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_JBM_TX" name="JBM_TX">
+    <columns uid="col_JBM_TX_NODE_ID" name="NODE_ID" isPrimaryKey="false" isForeignKey="false">
+      <type name="int4" size="10" nullable="true" type="INTEGER"/>
+    </columns>
+    <columns uid="col_JBM_TX_TRANSACTION_ID" name="TRANSACTION_ID" isPrimaryKey="true" isForeignKey="false">
+      <type name="int8" size="19" type="BIGINT"/>
+    </columns>
+    <columns uid="col_JBM_TX_BRANCH_QUAL" name="BRANCH_QUAL" isPrimaryKey="false" isForeignKey="false">
+      <type name="bytea" size="2147483647" nullable="true" type="BINARY"/>
+    </columns>
+    <columns uid="col_JBM_TX_FORMAT_ID" name="FORMAT_ID" isPrimaryKey="false" isForeignKey="false">
+      <type name="int4" size="10" nullable="true" type="INTEGER"/>
+    </columns>
+    <columns uid="col_JBM_TX_GLOBAL_TXID" name="GLOBAL_TXID" isPrimaryKey="false" isForeignKey="false">
+      <type name="bytea" size="2147483647" nullable="true" type="BINARY"/>
+    </columns>
+    <primaryKey uid="pk_JBM_TX" name="pk_JBM_TX" includedColumns="col_JBM_TX_TRANSACTION_ID"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_JBM_TX_EX" name="JBM_TX_EX">
+    <columns uid="col_JBM_TX_EX_TRANSACTION_ID" name="TRANSACTION_ID" isPrimaryKey="true" isForeignKey="false">
+      <type name="int8" size="19" type="BIGINT"/>
+    </columns>
+    <columns uid="col_JBM_TX_EX_START_TIME" name="START_TIME" isPrimaryKey="false" isForeignKey="false">
+      <type name="int8" size="19" nullable="true" type="BIGINT"/>
+    </columns>
+    <primaryKey uid="pk_JBM_TX_EX" name="pk_JBM_TX_EX" includedColumns="col_JBM_TX_EX_TRANSACTION_ID"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_JBM_USER" name="JBM_USER">
+    <columns uid="col_JBM_USER_USER_ID" name="USER_ID" isPrimaryKey="true" isForeignKey="false">
+      <type name="varchar" size="32" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_JBM_USER_PASSWD" name="PASSWD" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="32" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_JBM_USER_CLIENTID" name="CLIENTID" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="128" nullable="true" type="VARCHAR"/>
+    </columns>
+    <primaryKey uid="pk_JBM_USER" name="pk_JBM_USER" includedColumns="col_JBM_USER_USER_ID"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_SEND_D_STATO_MESSAGGIO" name="SEND_D_STATO_MESSAGGIO">
+    <columns uid="col_SEND_D_STATO_MESSAGGIO_ID_STATO_MESSAGGIO" name="ID_STATO_MESSAGGIO" isPrimaryKey="true" isForeignKey="false">
+      <type name="int4" size="10" type="INTEGER"/>
+    </columns>
+    <columns uid="col_SEND_D_STATO_MESSAGGIO_COD_STATO_MESSAGGIO" name="COD_STATO_MESSAGGIO" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="10" nullable="true" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_SEND_D_STATO_MESSAGGIO_DESCR_STATO_MESSAGGIO" name="DESCR_STATO_MESSAGGIO" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="100" nullable="true" type="VARCHAR"/>
+    </columns>
+    <primaryKey uid="pk_SEND_D_STATO_MESSAGGIO" name="pk_SEND_D_STATO_MESSAGGIO" includedColumns="col_SEND_D_STATO_MESSAGGIO_ID_STATO_MESSAGGIO"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_SEND_D_STATO_RICHIESTA" name="SEND_D_STATO_RICHIESTA">
+    <columns uid="col_SEND_D_STATO_RICHIESTA_ID_STATO_RICHIESTA" name="ID_STATO_RICHIESTA" isPrimaryKey="true" isForeignKey="false">
+      <type name="int4" size="10" type="INTEGER"/>
+    </columns>
+    <columns uid="col_SEND_D_STATO_RICHIESTA_COD_STATO_RICHIESTA" name="COD_STATO_RICHIESTA" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="10" nullable="true" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_SEND_D_STATO_RICHIESTA_DESCR_STATO_RICHIESTA" name="DESCR_STATO_RICHIESTA" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="100" nullable="true" type="VARCHAR"/>
+    </columns>
+    <primaryKey uid="pk_SEND_D_STATO_RICHIESTA" name="pk_SEND_D_STATO_RICHIESTA" includedColumns="col_SEND_D_STATO_RICHIESTA_ID_STATO_RICHIESTA"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_SEND_D_TIPO_CANALE" name="SEND_D_TIPO_CANALE">
+    <columns uid="col_SEND_D_TIPO_CANALE_ID_TIPO_CANALE" name="ID_TIPO_CANALE" isPrimaryKey="true" isForeignKey="false">
+      <type name="int4" size="10" type="INTEGER"/>
+    </columns>
+    <columns uid="col_SEND_D_TIPO_CANALE_COD_TIPO_CANALE" name="COD_TIPO_CANALE" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="10" nullable="true" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_SEND_D_TIPO_CANALE_DESCR_TIPO_CANALE" name="DESCR_TIPO_CANALE" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="100" nullable="true" type="VARCHAR"/>
+    </columns>
+    <primaryKey uid="pk_SEND_D_TIPO_CANALE" name="pk_SEND_D_TIPO_CANALE" includedColumns="col_SEND_D_TIPO_CANALE_ID_TIPO_CANALE"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_SEND_R_FRUITORE_CANALE" name="SEND_R_FRUITORE_CANALE">
+    <columns uid="col_SEND_R_FRUITORE_CANALE_ID_FRUITORE" name="ID_FRUITORE" isPrimaryKey="true" isForeignKey="true">
+      <type name="numeric" size="10" type="NUMERIC"/>
+    </columns>
+    <columns uid="col_SEND_R_FRUITORE_CANALE_ID_TIPO_CANALE" name="ID_TIPO_CANALE" isPrimaryKey="true" isForeignKey="true">
+      <type name="int4" size="10" type="INTEGER"/>
+    </columns>
+    <columns uid="col_SEND_R_FRUITORE_CANALE_DATA_INIZIO_VAL" name="DATA_INIZIO_VAL" isPrimaryKey="true" isForeignKey="false">
+      <type name="date" size="13" type="DATE"/>
+    </columns>
+    <columns uid="col_SEND_R_FRUITORE_CANALE_DATA_FINE_VAL" name="DATA_FINE_VAL" isPrimaryKey="false" isForeignKey="false">
+      <type name="date" size="13" nullable="true" type="DATE"/>
+    </columns>
+    <primaryKey uid="pk_SEND_R_FRUITORE_CANALE" name="pk_SEND_R_FRUITORE_CANALE" includedColumns="col_SEND_R_FRUITORE_CANALE_ID_FRUITORE col_SEND_R_FRUITORE_CANALE_ID_TIPO_CANALE col_SEND_R_FRUITORE_CANALE_DATA_INIZIO_VAL"/>
+    <foreignKeys uid="fk_send_r_fruitore_canale_id_fruitore_fkey" name="send_r_fruitore_canale_id_fruitore_fkey" includedColumns="col_SEND_R_FRUITORE_CANALE_ID_FRUITORE" referredUC="pk_SEND_T_FRUITORE"/>
+    <foreignKeys uid="fk_send_r_fruitore_canale_id_tipo_canale_fkey" name="send_r_fruitore_canale_id_tipo_canale_fkey" includedColumns="col_SEND_R_FRUITORE_CANALE_ID_TIPO_CANALE" referredUC="pk_SEND_D_TIPO_CANALE"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_SEND_R_FRUITORE_TEMPLATE" name="SEND_R_FRUITORE_TEMPLATE">
+    <columns uid="col_SEND_R_FRUITORE_TEMPLATE_ID_FRUITORE" name="ID_FRUITORE" isPrimaryKey="true" isForeignKey="true">
+      <type name="numeric" size="10" type="NUMERIC"/>
+    </columns>
+    <columns uid="col_SEND_R_FRUITORE_TEMPLATE_ID_TEMPLATE" name="ID_TEMPLATE" isPrimaryKey="true" isForeignKey="true">
+      <type name="numeric" size="10" type="NUMERIC"/>
+    </columns>
+    <primaryKey uid="pk_SEND_R_FRUITORE_TEMPLATE" name="pk_SEND_R_FRUITORE_TEMPLATE" includedColumns="col_SEND_R_FRUITORE_TEMPLATE_ID_FRUITORE col_SEND_R_FRUITORE_TEMPLATE_ID_TEMPLATE"/>
+    <foreignKeys uid="fk_send_r_fruitore_template_id_template_fkey" name="send_r_fruitore_template_id_template_fkey" includedColumns="col_SEND_R_FRUITORE_TEMPLATE_ID_TEMPLATE" referredUC="pk_SEND_T_TEMPLATE"/>
+    <foreignKeys uid="fk_send_r_fruitore_template_id_fruitore_fkey" name="send_r_fruitore_template_id_fruitore_fkey" includedColumns="col_SEND_R_FRUITORE_TEMPLATE_ID_FRUITORE" referredUC="pk_SEND_T_FRUITORE"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_SEND_T_FRUITORE" name="SEND_T_FRUITORE">
+    <columns uid="col_SEND_T_FRUITORE_ID_FRUITORE" name="ID_FRUITORE" isPrimaryKey="true" isForeignKey="false">
+      <type name="numeric" size="10" type="NUMERIC"/>
+    </columns>
+    <columns uid="col_SEND_T_FRUITORE_COD_FRUITORE" name="COD_FRUITORE" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="10" nullable="true" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_SEND_T_FRUITORE_DESCR_FRUITORE" name="DESCR_FRUITORE" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="100" nullable="true" type="VARCHAR"/>
+    </columns>
+    <primaryKey uid="pk_SEND_T_FRUITORE" name="pk_SEND_T_FRUITORE" includedColumns="col_SEND_T_FRUITORE_ID_FRUITORE"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_SEND_T_MESSAGGIO" name="SEND_T_MESSAGGIO">
+    <columns uid="col_SEND_T_MESSAGGIO_ID_MESSAGGIO" name="ID_MESSAGGIO" isPrimaryKey="true" isForeignKey="false">
+      <type name="serial" size="10" type="INTEGER"/>
+    </columns>
+    <columns uid="col_SEND_T_MESSAGGIO_ID_RICHIESTA" name="ID_RICHIESTA" isPrimaryKey="false" isForeignKey="true">
+      <type name="int4" size="10" nullable="true" type="INTEGER"/>
+    </columns>
+    <columns uid="col_SEND_T_MESSAGGIO_IDENT_MESSAGGIO_FRUITORE" name="IDENT_MESSAGGIO_FRUITORE" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="20" nullable="true" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_SEND_T_MESSAGGIO_ID_TIPO_CANALE" name="ID_TIPO_CANALE" isPrimaryKey="false" isForeignKey="true">
+      <type name="int4" size="10" nullable="true" type="INTEGER"/>
+    </columns>
+    <columns uid="col_SEND_T_MESSAGGIO_ID_TEMPLATE" name="ID_TEMPLATE" isPrimaryKey="false" isForeignKey="true">
+      <type name="numeric" size="10" nullable="true" type="NUMERIC"/>
+    </columns>
+    <columns uid="col_SEND_T_MESSAGGIO_ID_STATO_MESSAGGIO" name="ID_STATO_MESSAGGIO" isPrimaryKey="false" isForeignKey="true">
+      <type name="int4" size="10" nullable="true" type="INTEGER"/>
+    </columns>
+    <columns uid="col_SEND_T_MESSAGGIO_DATA_INSERIMENTO" name="DATA_INSERIMENTO" isPrimaryKey="false" isForeignKey="false">
+      <type name="date" size="13" nullable="true" var="" type="TIMESTAMP"/>
+    </columns>
+    <columns uid="col_SEND_T_MESSAGGIO_DATA_AGGIORNAMENTO" name="DATA_AGGIORNAMENTO" isPrimaryKey="false" isForeignKey="false">
+      <type name="date" size="13" nullable="true" type="TIMESTAMP"/>
+    </columns>
+    <columns uid="col_SEND_T_MESSAGGIO_ID_JMS_MESSAGGIO" name="ID_JMS_MESSAGGIO" isPrimaryKey="false" isForeignKey="false">
+      <type name="int4" size="10" nullable="true" type="INTEGER"/>
+    </columns>
+    <primaryKey uid="pk_SEND_T_MESSAGGIO" name="pk_SEND_T_MESSAGGIO" includedColumns="col_SEND_T_MESSAGGIO_ID_MESSAGGIO"/>
+    <foreignKeys uid="fk_send_t_messaggio_id_richiesta_fkey" name="send_t_messaggio_id_richiesta_fkey" includedColumns="col_SEND_T_MESSAGGIO_ID_RICHIESTA" referredUC="pk_SEND_T_RICHIESTA"/>
+    <foreignKeys uid="fk_send_t_messaggio_id_tipo_canale_fkey" name="send_t_messaggio_id_tipo_canale_fkey" includedColumns="col_SEND_T_MESSAGGIO_ID_TIPO_CANALE" referredUC="pk_SEND_D_TIPO_CANALE"/>
+    <foreignKeys uid="fk_send_t_messaggio_id_template_fkey" name="send_t_messaggio_id_template_fkey" includedColumns="col_SEND_T_MESSAGGIO_ID_TEMPLATE" referredUC="pk_SEND_T_TEMPLATE"/>
+    <foreignKeys uid="fk_send_t_messaggio_id_stato_messaggio_fkey" name="send_t_messaggio_id_stato_messaggio_fkey" includedColumns="col_SEND_T_MESSAGGIO_ID_STATO_MESSAGGIO" referredUC="pk_SEND_D_STATO_MESSAGGIO"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_SEND_T_RICHIESTA" name="SEND_T_RICHIESTA">
+    <columns uid="col_SEND_T_RICHIESTA_ID_RICHIESTA" name="ID_RICHIESTA" isPrimaryKey="true" isForeignKey="false">
+      <type name="serial" size="10" type="INTEGER"/>
+    </columns>
+    <columns uid="col_SEND_T_RICHIESTA_ID_FRUITORE" name="ID_FRUITORE" isPrimaryKey="false" isForeignKey="true">
+      <type name="numeric" size="10" nullable="true" type="NUMERIC"/>
+    </columns>
+    <columns uid="col_SEND_T_RICHIESTA_ID_STATO_RICHIESTA" name="ID_STATO_RICHIESTA" isPrimaryKey="false" isForeignKey="true">
+      <type name="int4" size="10" nullable="true" type="INTEGER"/>
+    </columns>
+    <columns uid="col_SEND_T_RICHIESTA_ID_JMS_RICHIESTA" name="ID_JMS_RICHIESTA" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="50" nullable="true" type="VARCHAR"/>
+    </columns>
+    <primaryKey uid="pk_SEND_T_RICHIESTA" name="pk_SEND_T_RICHIESTA" includedColumns="col_SEND_T_RICHIESTA_ID_RICHIESTA"/>
+    <foreignKeys uid="fk_send_t_richiesta_id_fruitore_fkey" name="send_t_richiesta_id_fruitore_fkey" includedColumns="col_SEND_T_RICHIESTA_ID_FRUITORE" referredUC="pk_SEND_T_FRUITORE"/>
+    <foreignKeys uid="fk_send_t_richiesta_id_stato_richiesta_fkey" name="send_t_richiesta_id_stato_richiesta_fkey" includedColumns="col_SEND_T_RICHIESTA_ID_STATO_RICHIESTA" referredUC="pk_SEND_D_STATO_RICHIESTA"/>
+  </elements>
+  <elements xsi:type="rdbmdl:Table" uid="tb_SEND_T_TEMPLATE" name="SEND_T_TEMPLATE">
+    <columns uid="col_SEND_T_TEMPLATE_ID_TEMPLATE" name="ID_TEMPLATE" isPrimaryKey="true" isForeignKey="false">
+      <type name="numeric" size="10" type="NUMERIC"/>
+    </columns>
+    <columns uid="col_SEND_T_TEMPLATE_COD_TEMPLATE" name="OGGETTO_TEMPLATE" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="100" nullable="true" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_SEND_T_TEMPLATE_COD_TEMPLATE" name="COD_TEMPLATE" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="10" nullable="true" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_SEND_T_TEMPLATE_DESCR_TEMPLATE" name="DESCR_TEMPLATE" isPrimaryKey="false" isForeignKey="false">
+      <type name="varchar" size="100" nullable="true" type="VARCHAR"/>
+    </columns>
+    <columns uid="col_SEND_T_TEMPLATE_TESTO_TEMPLATE" name="TESTO_TEMPLATE" isPrimaryKey="false" isForeignKey="false">
+      <type name="text" size="2147483647" nullable="true" type="VARCHAR"/>
+    </columns>
+    <primaryKey uid="pk_SEND_T_TEMPLATE" name="pk_SEND_T_TEMPLATE" includedColumns="col_SEND_T_TEMPLATE_ID_TEMPLATE"/>
+  </elements>
+</rdbmdl:Schema>

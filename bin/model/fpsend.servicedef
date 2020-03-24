@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<servicedef:ServiceDef xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:servicedef="http://www.csi.it/mddtools/servicedef" xmlns:typedef="http://www.csi.it/mddtools/typedef" codServizio="fpsend" monitorable="true" diagEnabled="true" versione="1.0" traceEnabled="true" codProdotto="fpcommon" codComponente="fpsend">
+  <bindings xsi:type="servicedef:EJBPABinding" codBinding="ejbpa"/>
+  <bindings xsi:type="servicedef:SOAPPABRBinding" codBinding="pabr"/>
+  <bindings xsi:type="servicedef:WSFADBinding" codBinding="wsfad"/>
+  <operations name="sendMessage" opType="asynch" throws="//@types/@types.11" txType="newLocalTX" since="1.0">
+    <params name="requestMessage" type="//@types/@types.3"/>
+    <returnType xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+  </operations>
+  <operations name="sendMessages" opType="asynch" throws="//@types/@types.11" txType="newLocalTX" since="1.0">
+    <params name="requestMessages" type="//@types/@types.4"/>
+    <returnType xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+  </operations>
+  <operations name="sendPec" returnType="//@types/@types.6" throws="//@types/@types.11" txType="newLocalTX" since="1.0">
+    <params name="requestMessage" type="//@types/@types.3"/>
+  </operations>
+  <operations name="recuperaPec" returnType="//@types/@types.10" throws="//@types/@types.12" txType="newLocalTX" since="1.0">
+    <params name="request" type="//@types/@types.9"/>
+  </operations>
+  <types>
+    <types xsi:type="typedef:Entity" name="Message">
+      <features name="template" type="//@types/@types.1"/>
+      <features name="channel">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+      <features name="callerInternalCode">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+      <features name="sender">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+      <features name="recipient">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+      <features name="recipients">
+        <type xsi:type="typedef:TypedArray" href="basetypes.servicegen#//@baseTypes.20"/>
+      </features>
+      <features name="body">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+      <features name="subject">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+      <features name="attachment" type="//@types/@types.5"/>
+    </types>
+    <types xsi:type="typedef:Entity" name="Template">
+      <features name="code">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+      <features name="placeHolders" type="//@types/@types.8"/>
+    </types>
+    <types xsi:type="typedef:Entity" name="PlaceHolder">
+      <features name="key">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+      <features name="value">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+    </types>
+    <types xsi:type="typedef:Entity" name="RequestMessage">
+      <features name="message" type="//@types/@types.0"/>
+      <features name="caller">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+    </types>
+    <types xsi:type="typedef:Entity" name="RequestMessages">
+      <features name="messages" type="//@types/@types.7"/>
+      <features name="caller">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+    </types>
+    <types xsi:type="typedef:Entity" name="Attachment">
+      <features name="name">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+      <features name="attachment">
+        <type xsi:type="typedef:TypedArray" href="basetypes.servicegen#//@baseTypes.15"/>
+      </features>
+    </types>
+    <types xsi:type="typedef:Entity" name="ResponseMessage">
+      <features name="id">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+    </types>
+    <types xsi:type="typedef:TypedArray" name="messages" componentType="//@types/@types.0"/>
+    <types xsi:type="typedef:TypedArray" name="placeHolders" componentType="//@types/@types.2"/>
+    <types xsi:type="typedef:Entity" name="RequestRecuperaPec">
+      <features name="messageId">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+    </types>
+    <types xsi:type="typedef:Entity" name="ResponseRecuperaPec">
+      <features name="esito">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+      <features name="file">
+        <type xsi:type="typedef:TypedArray" href="basetypes.servicegen#//@baseTypes.15"/>
+      </features>
+      <features name="pecType">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.7"/>
+      </features>
+      <features name="dataConsegna">
+        <type xsi:type="typedef:CSIDatatype" href="basetypes.servicegen#//@baseTypes.3"/>
+      </features>
+    </types>
+    <types xsi:type="typedef:Exception" name="SendMessageException"/>
+    <types xsi:type="typedef:Exception" name="RecuperaPecException"/>
+  </types>
+</servicedef:ServiceDef>

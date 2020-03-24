@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datagen:DBAccessModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:datagen="http://www.csi.it/mddtools/datagen" codProdotto="fpsend" codComponente="stacore" name="fpsend">
+  <schema href="fpsend.rdbmdl#/"/>
+  <daopkgs name="fpsend">
+    <dao name="SendTRichiesta">
+      <mainTable href="fpsend.rdbmdl#tb_SEND_T_RICHIESTA"/>
+      <inserter name="insert"/>
+      <finders>
+        <finders xsi:type="datagen:CustomFinder" name="byFruitoreJmsRichiesta" filterClassFQN="int fruitore, String"/>
+      </finders>
+      <updaters>
+        <updaters xsi:type="datagen:UpdateColumns" name="StatoRichiesta">
+          <columns href="fpsend.rdbmdl#col_SEND_T_RICHIESTA_ID_STATO_RICHIESTA"/>
+        </updaters>
+      </updaters>
+    </dao>
+    <dao name="SendTFruitore">
+      <mainTable href="fpsend.rdbmdl#tb_SEND_T_FRUITORE"/>
+      <finders>
+        <finders xsi:type="datagen:CustomFinder" name="findByCodFruitore" filterClassFQN="String"/>
+      </finders>
+    </dao>
+    <dao name="SendRFruitoreCanale">
+      <mainTable href="fpsend.rdbmdl#tb_SEND_R_FRUITORE_CANALE"/>
+      <finders>
+        <finders xsi:type="datagen:FindByPK" name="findByPrimaryKey"/>
+        <finders xsi:type="datagen:CustomFinder" name="findCanaliAttivibyFruitore" filterClassFQN="Integer"/>
+      </finders>
+    </dao>
+    <dao name="SendTMessaggio">
+      <mainTable href="fpsend.rdbmdl#tb_SEND_T_MESSAGGIO"/>
+      <inserter name="insert"/>
+      <finders>
+        <finders xsi:type="datagen:CustomFinder" name="byIdRichiesta" filterClassFQN="Integer"/>
+      </finders>
+      <updaters>
+        <updaters xsi:type="datagen:UpdateColumns" name="StatoMessaggio">
+          <columns href="fpsend.rdbmdl#col_SEND_T_MESSAGGIO_ID_STATO_MESSAGGIO"/>
+          <columns href="fpsend.rdbmdl#col_SEND_T_MESSAGGIO_DATA_AGGIORNAMENTO"/>
+        </updaters>
+        <updaters xsi:type="datagen:CustomUpdater" name="updateStato" filterClassFQN="String" valueClassFQN="Integer"/>
+      </updaters>
+    </dao>
+    <dao name="SendDTipoCanale">
+      <mainTable href="fpsend.rdbmdl#tb_SEND_D_TIPO_CANALE"/>
+      <finders>
+        <finders xsi:type="datagen:CustomFinder" name="findCanaliAttiviByFruitore" filterClassFQN="String" customSelect="true" customFrom="true"/>
+      </finders>
+    </dao>
+    <dao name="SendTTemplate">
+      <mainTable href="fpsend.rdbmdl#tb_SEND_T_TEMPLATE"/>
+      <finders>
+        <finders xsi:type="datagen:CustomFinder" name="byCodTemplate" filterClassFQN="int fruitore, String" customSelect="true" customFrom="true"/>
+      </finders>
+    </dao>
+  </daopkgs>
+</datagen:DBAccessModel>

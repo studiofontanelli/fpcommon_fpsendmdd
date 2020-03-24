@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<workflow> 
+    
+	<cartridge file="it/csi/mddtools/datagen/workflow/basicDao.mwe"
+  		model="fpcommon_fpsendmdd/src/model/db/fpsend.datagen" 
+  		daoTargetProjectName="fpcommon_fpsend"
+  		basePackage="it.csi.fpcommon.fpsend"
+  		targetDbms="postgresql"
+  		daoBeansFileName="conf/ejb/fpsend/META-INF/fpsendDao-beans.xml"
+	/>
+
+</workflow>
